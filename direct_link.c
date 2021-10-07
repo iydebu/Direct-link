@@ -39,7 +39,7 @@ int main()
     char *link = (char *)malloc(sizeof(char) * 100);
     char *id = (char *)malloc(sizeof(char) * 100);
     logo();
-    printf("\nEnter the link: ");
+    printf("\nEnter the public link of google drive: ");
     fgets(link, 100, stdin);
     char *index = strstr(link, "d/");
     if (index == NULL)
