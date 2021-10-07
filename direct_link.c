@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #ifdef _WIN32
-#include <windows.h>
+#include <Windows.h>
 #else
 #include <conio.h>
 #endif
@@ -32,6 +32,9 @@ int clip(const char *output)
 
 int main()
 {
+#ifdef _WIN32
+    SetConsoleTitle("Direct-link");
+#endif
     int i = 0;
     char *link = (char *)malloc(sizeof(char) * 100);
     char *id = (char *)malloc(sizeof(char) * 100);
@@ -42,6 +45,7 @@ int main()
     if (index == NULL)
     {
         printf("\ninvalid link\n");
+        system("pause");
         return 0;
     }
     index += 2;
@@ -50,6 +54,7 @@ int main()
     if (i >= 100)
     {
         printf("\ninvalid link\n");
+        system("pause");
         return 0;
     }
     index[i] = '\0';
@@ -60,7 +65,7 @@ int main()
     (clip(link) == 1) ? printf("\nCopied succesfully...\n") : printf("\nfailed to copy!\n");
     printf("\n*****DEBU******\n");
 #ifdef _WIN32
-    system("cls");
+    system("pause");
 #else
     getch();
 #endif
