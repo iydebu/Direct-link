@@ -41,22 +41,24 @@ int main()
     logo();
     printf("\nEnter the public link of google drive: ");
     fgets(link, 100, stdin);
-    char *index = strstr(link, "d/");
+    char *index = strstr(link, "https://drive.google.com/file/d/");
     if (index == NULL)
     {
         printf("\ninvalid link\n");
         system("pause");
         return 0;
     }
-    index += 2;
-    for (i = 0; index[i] != '/' && i <= 100; i++)
-        ;
-    if (i >= 100)
+    index = strstr(link,"/view?usp=sharing");
+    if (index == NULL)
     {
         printf("\ninvalid link\n");
         system("pause");
         return 0;
     }
+    index = strstr(link, "https://drive.google.com/file/d/");
+    index += 32;
+    for (i = 0; index[i] != '/' && i <= 100; i++)
+        ;
     index[i] = '\0';
     strcpy(id, index);
     strcpy(link, "https://drive.google.com/uc?export=download&id=");
